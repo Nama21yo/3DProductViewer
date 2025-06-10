@@ -1,13 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>3D Product Viewer</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <!-- Canvas for the 3D scene -->
+    <canvas class="webgl"></canvas>
+
+    <!-- Info panel to display part names -->
+    <div id="info-panel" class="hidden">
+      <p id="part-name"></p>
+    </div>
+
+    <!-- UI Controls -->
+    <div class="ui-controls">
+      <button id="toggle-rotate">Toggle Auto-Rotate</button>
+    </div>
+
+    <!-- Main application script -->
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
