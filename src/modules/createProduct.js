@@ -1,4 +1,3 @@
-// src/modules/createProduct.js
 import * as THREE from "three";
 
 /**
@@ -6,10 +5,10 @@ import * as THREE from "three";
  * @param {object} appState - The shared state object containing the scene.
  */
 export function createProduct(appState) {
-  // A group to hold all parts of the product
+  // Center the product at the origin (0,0,0)
   const productGroup = new THREE.Group();
-  productGroup.position.y = -0.5; // Adjust group position
-  appState.productGroup = productGroup; // Store in state for other modules
+  productGroup.position.set(0, 0, 0);
+  appState.productGroup = productGroup;
 
   const woodMaterial = new THREE.MeshStandardMaterial({
     color: 0x8b4513,
@@ -33,7 +32,7 @@ export function createProduct(appState) {
     new THREE.BoxGeometry(1.5, 2, 0.2),
     woodMaterial.clone()
   );
-  backrest.name = "Backrest";
+  backrest.name = "Chair Backrest";
   backrest.position.set(0, 2, -0.65);
   backrest.castShadow = true;
   backrest.receiveShadow = true;
