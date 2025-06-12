@@ -2,6 +2,8 @@
 
 An interactive 3D product viewer built with **Three.js** and **Vite**. This application demonstrates core Three.js concepts including scene setup, mesh creation, lighting, raycasting for interaction, and camera controls.
 
+![image](https://github.com/user-attachments/assets/e7ca8f7d-7ea3-4aab-9d4e-59198ca15f30)
+
 ---
 
 ## Features
