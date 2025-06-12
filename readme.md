@@ -1,6 +1,9 @@
 # 3D Product Viewer using Three.js
 
 An interactive 3D product viewer built with **Three.js** and **Vite**. This application demonstrates core Three.js concepts including scene setup, mesh creation, lighting, raycasting for interaction, and camera controls.
+- ### Name - Natnael Yohanes
+- ### ID - UGR/0668/15
+- ### Section - 3
 
 ![image](https://github.com/user-attachments/assets/e7ca8f7d-7ea3-4aab-9d4e-59198ca15f30)
 
