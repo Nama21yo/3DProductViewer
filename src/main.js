@@ -1,17 +1,19 @@
-// src/main.js
-import { initializeScene } from "./modules/scene.js";
+import { initializeScene } from "./modules/initScene.js";
 import { createProduct } from "./modules/createProduct.js";
-import { addLighting } from "./modules/lighting.js";
+import { addLighting } from "./modules/addLighting.js";
 import {
   setupCameraControls,
   updateCameraAnimation,
-} from "./modules/cameraControls.js";
-import { setupInteraction } from "./modules/interaction.js";
+  setOrbitControlsEnabled,
+} from "./modules/cameraAnimation.js";
+import {
+  setupInteraction,
+  updateProductAnimation,
+} from "./modules/interaction.js";
 
 // --- MAIN APPLICATION ---
 
 // 1. STATE MANAGEMENT
-// A central object to hold the shared state of our application
 const appState = {
   scene: null,
   camera: null,
@@ -20,6 +22,7 @@ const appState = {
   clock: null,
   productGroup: null, // Will be populated by createProduct
   autoRotate: true,
+  userInteracting: false, // Track user interaction for override
 };
 
 // 2. INITIALIZATION
@@ -29,7 +32,7 @@ function init() {
   // Initialize core components and populate appState
   initializeScene(appState, canvas);
 
-  // Create the 3D objects
+  // Create the 3D objects (centered at origin)
   createProduct(appState);
 
   // Add lighting
@@ -47,11 +50,16 @@ function init() {
 function animate() {
   requestAnimationFrame(animate);
 
-  // Update modules that require animation frame updates
+  // Update camera animation (auto-rotate)
   updateCameraAnimation(appState);
 
-  // Update controls
-  appState.controls.update();
+  // Update mesh animation (floating/pulsing effect)
+  updateProductAnimation(appState);
+
+  // Update controls if not auto-rotating
+  if (appState.controls && !appState.autoRotate) {
+    appState.controls.update();
+  }
 
   // Render the scene
   appState.renderer.render(appState.scene, appState.camera);
